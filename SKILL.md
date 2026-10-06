@@ -29,22 +29,31 @@ Describe the visible subject from the photo, then state what must stay recogniza
 | LUMO | coral red | expressive and social; lively composition with restrained halftone marks |
 | SONA | purple | responsive and balanced; paired shapes, soft grid, or echoing arcs |
 
-When working in miniprogram-1, read the exact family colors from miniprogram/components/como-ui/tokens.wxss. The current mapping is MORO green, VEO yellow, LUMO coral red, and SONA purple. Keep energy color separate from feedback/status color. A small pink mushroom badge is a shared decorative mark, not an energy indicator.
+When working in miniprogram-1, read the exact family colors from miniprogram/components/como-ui/tokens.wxss. The current mapping is MORO green, VEO yellow, LUMO coral red, and SONA purple. Keep energy color separate from feedback/status color. The mushroom is a shared decorative mark, not an energy indicator.
+
+## Standard COMO mushroom
+
+Use assets/como-mushroom-standard.png as the canonical shape reference for the small mushroom badge. Preserve these traits:
+
+- A broad, slightly asymmetrical hot-pink dome with a thick black outer contour.
+- Several uneven warm-ivory patches on the cap, each separated by bold black strokes. Do not replace them with a generic red cap and evenly spaced white circles.
+- A curved pale-blush stalk that narrows under the cap and widens into a rounded base, with a thick black outline and one simple inner black curve.
+- Keep the complete mushroom recognizable but secondary to the photo subject. Do not copy the reference image's large blank canvas into the generated composition.
 
 ### Required visual treatment
 
 - Flat vector sticker with a strong, consistent ink outline, hard edges, high contrast, and a single hard shadow offset down and right.
 - No gradients, blur, glossy lighting, photorealistic repainting, or 3D rendering.
 - Isolate the sticker on a plain white background. If the chosen generator supports transparency and the user asks for a transparent cutout, preserve that request instead.
-- Include one small pink mushroom badge with light spots, placed on a suitable object or near the sticker edge. Keep it secondary to the photo's subject.
+- Include one small badge matching the standard mushroom shape, placed on a suitable object or near the sticker edge. Keep it secondary to the photo's subject.
 - Do not add text, dates, logos, watermarks, extra people, or objects absent from the source unless the user explicitly asks.
 - Ignore model-specific suffixes such as --v 6.0 unless the selected generator documents that syntax.
 
 ## Generate
 
-For a standalone image request, use the available image-generation tool in image-to-image mode and attach the actual supplied photo as the reference. If the image is already available as a local file, use its local path; if it exists only as a recent conversation attachment, include that attachment. Do not substitute a text-only generation.
+For a standalone image request, use the available image-generation tool in image-to-image mode and attach the actual supplied photo as the edit target. When both images are available as local files, include assets/como-mushroom-standard.png as a secondary visual reference. If the user photo exists only as a recent conversation attachment, include it and use the morphology description above for the mushroom. Do not substitute a text-only generation.
 
-For work inside the COMO mini program, keep generation server-side: call the configured CloudBase function generateImage-3AA3UB with the compiled prompt and the current owner's uploaded photo URL. Configure it for model HY-Image-v3.0-I2I-ToB-v1.0.1 and keep the prompt within 500 characters. Do not call the image model directly from the mini-program client or switch providers. Keep the current energy family and source photo bound to the same owner.
+For work inside the COMO mini program, keep generation server-side: call the configured CloudBase function generateImage-3AA3UB with the compiled prompt and the current owner's uploaded photo URL. The image-to-image request has one source-photo input, so describe the standard mushroom in the prompt rather than adding it as a second model input. Configure the function for model HY-Image-v3.0-I2I-ToB-v1.0.1 and keep the prompt within 500 characters. Do not call the image model directly from the mini-program client or switch providers. Keep the current energy family and source photo bound to the same owner.
 
 ## Check and return
 
