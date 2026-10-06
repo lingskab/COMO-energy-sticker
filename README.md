@@ -8,7 +8,9 @@ Skill 会读取本轮提供的照片，并在 COMO 项目上下文中读取当�
 
 在 Codex 中调用 $como-energy-sticker-i2i，并提供要处理的照片。没有可读取的当前能量时，Skill 会说明情况，不会猜测或替用户选择。
 
-将本仓库目录复制到 ~/.codex/skills/como-energy-sticker-i2i 后即可使用。Codex 若未立即发现新 Skill，可重新打开应用。
+仓库地址：https://github.com/lingskab/COMO-energy-sticker
+
+克隆到 ~/.codex/skills/como-energy-sticker-i2i 后即可使用。Codex 若未立即发现新 Skill，可重新打开应用。
 
 ## 许可
 
